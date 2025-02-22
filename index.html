@@ -105,6 +105,8 @@
                 <li><input type="checkbox" onchange="updateDailyPlan()"> 完成作业</li>
                 <li><input type="checkbox" onchange="updateDailyPlan()"> 锻炼身体</li>
             </ul>
+            <button onclick="viewDailyPlanHistory()">查看历史计划</button>
+            <div id="dailyPlanHistoryDisplay"></div>
         </div>
 
         <!-- 便签 -->
@@ -112,7 +114,9 @@
             <h2>便签</h2>
             <textarea id="stickyNoteText" rows="4" placeholder="在此输入便签..."></textarea><br>
             <button onclick="saveStickyNote()">保存便签</button>
+            <button onclick="viewStickyNoteHistory()">查看历史便签</button>
             <p id="stickyNoteDisplay"></p>
+            <div id="stickyNoteHistoryDisplay"></div>
         </div>
 
         <!-- 养宠 -->
@@ -120,9 +124,13 @@
             <h2>养宠</h2>
             <p>宠物如厕状态: <span id="petToiletStatus">未完成</span></p>
             <p>宠物睡觉状态: <span id="petSleepStatus">未完成</span></p>
+            <p>宠物好感度: <span id="petAffectionDisplay">50</span></p>
             <button onclick="petGoToToilet()">宠物如厕</button>
             <button onclick="petSleep()">宠物睡觉</button>
+            <button onclick="petFeeding()">宠物喂食</button>
+            <button onclick="petWatering()">宠物喂水</button>
             <button onclick="resetPetStatus()">重置宠物状态</button>
+            <p id="petEventMessage"></p>
         </div>
 
         <!-- 计算机 -->
@@ -173,15 +181,16 @@
     </div>
 
     <script>
-        // 初始化积分和如厕次数
+        // 初始化积分、如厕次数及宠物和历史记录数据
         let points = localStorage.getItem('points') ? parseInt(localStorage.getItem('points')) : 0;
         let toiletCount = localStorage.getItem('toiletCount') ? parseInt(localStorage.getItem('toiletCount')) : 3;
-
-        // 加载宠物状态、每日计划状态和便签内容
         let petToiletStatus = localStorage.getItem('petToiletStatus') === "true";
         let petSleepStatus = localStorage.getItem('petSleepStatus') === "true";
         let dailyPlanCompleted = localStorage.getItem('dailyPlanCompleted') === "true";
         let stickyNote = localStorage.getItem('stickyNote') || "";
+        let petAffection = localStorage.getItem('petAffection') ? parseInt(localStorage.getItem('petAffection')) : 50;
+        let dailyPlanHistory = localStorage.getItem('dailyPlanHistory') ? JSON.parse(localStorage.getItem('dailyPlanHistory')) : [];
+        let stickyNoteHistory = localStorage.getItem('stickyNoteHistory') ? JSON.parse(localStorage.getItem('stickyNoteHistory')) : [];
 
         const punishments = [
             "按压膀胱30秒",
@@ -196,12 +205,16 @@
             "闭眼冥想5分钟"
         ];
 
+        // 宠物行动冷却状态
+        let petReady = true;
+
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("points-value").innerText = points;
             document.getElementById("toiletCount").innerText = toiletCount;
             document.getElementById("stickyNoteDisplay").innerText = stickyNote ? "便签内容: " + stickyNote : "";
             document.getElementById("petToiletStatus").innerText = petToiletStatus ? "完成" : "未完成";
             document.getElementById("petSleepStatus").innerText = petSleepStatus ? "完成" : "未完成";
+            document.getElementById("petAffectionDisplay").innerText = petAffection;
         });
 
         // 页面切换
@@ -213,7 +226,7 @@
             });
         }
 
-        // 完成任务并增加积分
+        // 每日任务功能
         function completeTask(amount) {
             points += amount;
             localStorage.setItem('points', points);
@@ -221,61 +234,22 @@
             alert("任务完成，积分变化: " + amount);
         }
 
-        // 如厕申请——必须满足所有条件才能申请
-        function applyToilet() {
-            if (points < 50) {
-                document.getElementById("toiletStatus").innerText = "积分不足50，无法申请！";
-                return;
-            }
-            if (!stickyNote) {
-                document.getElementById("toiletStatus").innerText = "便签未记录，无法如厕！";
-                return;
-            }
-            if (!dailyPlanCompleted) {
-                document.getElementById("toiletStatus").innerText = "每日计划未完成，无法如厕！";
-                return;
-            }
-            if (!localStorage.getItem('petToiletStatus') || localStorage.getItem('petToiletStatus') !== "true") {
-                document.getElementById("toiletStatus").innerText = "宠物未如厕，无法如厕！";
-                return;
-            }
-            if (!localStorage.getItem('petSleepStatus') || localStorage.getItem('petSleepStatus') !== "true") {
-                document.getElementById("toiletStatus").innerText = "宠物未睡觉，无法如厕！";
-                return;
-            }
-            points -= 50;
-            localStorage.setItem('points', points);
-            document.getElementById("points-value").innerText = points;
-
-            if (toiletCount > 0) {
-                toiletCount--;
-                localStorage.setItem('toiletCount', toiletCount);
-                document.getElementById("toiletCount").innerText = toiletCount;
-                document.getElementById("toiletStatus").innerText = "如厕申请通过！";
-            } else {
-                document.getElementById("toiletStatus").innerText = "今日如厕次数已达上限！";
-            }
+        function addPeriodicTask() {
+            const periodicTasks = document.getElementById("periodic-tasks");
+            const newTask = document.createElement("li");
+            const tasksArray = [
+                {desc: "深呼吸5次", points: 5},
+                {desc: "伸展身体", points: 8},
+                {desc: "整理桌面", points: 10},
+                {desc: "喝一杯水", points: 7}
+            ];
+            const randomTask = tasksArray[Math.floor(Math.random() * tasksArray.length)];
+            newTask.innerHTML = `<button onclick="completeTask(${randomTask.points})">${randomTask.desc} (+${randomTask.points}分)</button>`;
+            periodicTasks.appendChild(newTask);
         }
+        setInterval(addPeriodicTask, 30000);
 
-        // 随机惩罚或奖励任务
-        function randomPunishment() {
-            const punishment = punishments[Math.floor(Math.random() * punishments.length)];
-            document.getElementById("punishmentResult").innerText = "随机任务: " + punishment;
-        }
-
-        // 便签功能
-        function saveStickyNote() {
-            const text = document.getElementById('stickyNoteText').value.trim();
-            if (text === "") {
-                alert("请先输入便签内容！");
-                return;
-            }
-            localStorage.setItem('stickyNote', text);
-            document.getElementById('stickyNoteDisplay').innerText = "便签内容: " + text;
-            alert("便签已保存！");
-        }
-
-        // 每日计划功能
+        // 每日计划功能及历史记录
         function updateDailyPlan() {
             const checkboxes = document.querySelectorAll('#dailyPlanList input[type="checkbox"]');
             let allChecked = true;
@@ -287,23 +261,131 @@
             dailyPlanCompleted = allChecked;
             localStorage.setItem('dailyPlanCompleted', dailyPlanCompleted);
             if (dailyPlanCompleted) {
+                let record = {date: new Date().toLocaleString(), status: "完成"};
+                dailyPlanHistory.push(record);
+                localStorage.setItem('dailyPlanHistory', JSON.stringify(dailyPlanHistory));
                 alert("每日计划已完成！");
             }
         }
 
-        // 养宠功能
+        function viewDailyPlanHistory() {
+            const display = document.getElementById("dailyPlanHistoryDisplay");
+            display.innerHTML = "<h3>历史计划记录:</h3>";
+            if (dailyPlanHistory.length === 0) {
+                display.innerHTML += "<p>暂无记录</p>";
+            } else {
+                let list = document.createElement("ul");
+                dailyPlanHistory.forEach(record => {
+                    let li = document.createElement("li");
+                    li.innerText = record.date + " - " + record.status;
+                    list.appendChild(li);
+                });
+                display.appendChild(list);
+            }
+        }
+
+        // 便签功能及历史记录
+        function saveStickyNote() {
+            const text = document.getElementById('stickyNoteText').value.trim();
+            if (text === "") {
+                alert("请先输入便签内容！");
+                return;
+            }
+            stickyNote = text;
+            localStorage.setItem('stickyNote', text);
+            let record = {date: new Date().toLocaleString(), note: text};
+            stickyNoteHistory.push(record);
+            localStorage.setItem('stickyNoteHistory', JSON.stringify(stickyNoteHistory));
+            document.getElementById('stickyNoteDisplay').innerText = "便签内容: " + text;
+            alert("便签已保存！");
+        }
+
+        function viewStickyNoteHistory() {
+            const display = document.getElementById("stickyNoteHistoryDisplay");
+            display.innerHTML = "<h3>历史便签记录:</h3>";
+            if (stickyNoteHistory.length === 0) {
+                display.innerHTML += "<p>暂无记录</p>";
+            } else {
+                let list = document.createElement("ul");
+                stickyNoteHistory.forEach(record => {
+                    let li = document.createElement("li");
+                    li.innerText = record.date + " - " + record.note;
+                    list.appendChild(li);
+                });
+                display.appendChild(list);
+            }
+        }
+
+        // 宠物功能及随机事件
+        function resetPetCooldown() {
+            petReady = false;
+            let cooldown = Math.floor(Math.random() * (30000 - 10000 + 1)) + 10000; // 10~30秒
+            setTimeout(() => {
+                petReady = true;
+                triggerRandomPetEvent();
+            }, cooldown);
+        }
+
+        function triggerRandomPetEvent() {
+            const events = [
+                "宠物突然跳起来打翻了水碗！",
+                "宠物开始追逐自己的尾巴。",
+                "宠物懒洋洋地伸了个懒腰。",
+                "宠物发出一声轻鸣，似乎在表达情绪。"
+            ];
+            let eventMsg = events[Math.floor(Math.random() * events.length)];
+            document.getElementById("petEventMessage").innerText = eventMsg;
+            setTimeout(() => { document.getElementById("petEventMessage").innerText = ""; }, 5000);
+        }
+
         function petGoToToilet() {
+            if (!petReady) {
+                alert("宠物正在忙，请稍候！");
+                return;
+            }
             petToiletStatus = true;
             localStorage.setItem('petToiletStatus', "true");
             document.getElementById("petToiletStatus").innerText = "完成";
+            resetPetCooldown();
             alert("宠物已如厕！");
         }
 
         function petSleep() {
+            if (!petReady) {
+                alert("宠物正在忙，请稍候！");
+                return;
+            }
             petSleepStatus = true;
             localStorage.setItem('petSleepStatus', "true");
             document.getElementById("petSleepStatus").innerText = "完成";
+            resetPetCooldown();
             alert("宠物已睡觉！");
+        }
+
+        function petFeeding() {
+            if (!petReady) {
+                alert("宠物正在忙，请稍候！");
+                return;
+            }
+            petAffection += 10;
+            if(petAffection > 100) petAffection = 100;
+            localStorage.setItem('petAffection', petAffection);
+            document.getElementById("petAffectionDisplay").innerText = petAffection;
+            resetPetCooldown();
+            alert("宠物已喂食，好感度提升！");
+        }
+
+        function petWatering() {
+            if (!petReady) {
+                alert("宠物正在忙，请稍候！");
+                return;
+            }
+            petAffection += 5;
+            if(petAffection > 100) petAffection = 100;
+            localStorage.setItem('petAffection', petAffection);
+            document.getElementById("petAffectionDisplay").innerText = petAffection;
+            resetPetCooldown();
+            alert("宠物已喂水，好感度提升！");
         }
 
         function resetPetStatus() {
@@ -334,23 +416,56 @@
             document.getElementById("calcDisplay").value = "";
         }
 
-        // 每日任务中周期性新增任务
-        function addPeriodicTask() {
-            const periodicTasks = document.getElementById("periodic-tasks");
-            const newTask = document.createElement("li");
-            const tasksArray = [
-                {desc: "深呼吸5次", points: 5},
-                {desc: "伸展身体", points: 8},
-                {desc: "整理桌面", points: 10},
-                {desc: "喝一杯水", points: 7}
-            ];
-            const randomTask = tasksArray[Math.floor(Math.random() * tasksArray.length)];
-            newTask.innerHTML = `<button onclick="completeTask(${randomTask.points})">${randomTask.desc} (+${randomTask.points}分)</button>`;
-            periodicTasks.appendChild(newTask);
+        // 如厕申请——增加宠物好感度判断
+        function applyToilet() {
+            if (points < 50) {
+                document.getElementById("toiletStatus").innerText = "积分不足50，无法申请！";
+                return;
+            }
+            if (!stickyNote) {
+                document.getElementById("toiletStatus").innerText = "便签未记录，无法如厕！";
+                return;
+            }
+            if (!dailyPlanCompleted) {
+                document.getElementById("toiletStatus").innerText = "每日计划未完成，无法如厕！";
+                return;
+            }
+            if (!localStorage.getItem('petToiletStatus') || localStorage.getItem('petToiletStatus') !== "true") {
+                document.getElementById("toiletStatus").innerText = "宠物未如厕，无法如厕！";
+                return;
+            }
+            if (!localStorage.getItem('petSleepStatus') || localStorage.getItem('petSleepStatus') !== "true") {
+                document.getElementById("toiletStatus").innerText = "宠物未睡觉，无法如厕！";
+                return;
+            }
+            // 根据宠物好感度判断是否允许如厕
+            if(petAffection < 30) {
+                document.getElementById("toiletStatus").innerText = "宠物好感度过低，不允许你如厕！";
+                return;
+            } else if (petAffection >= 30 && petAffection <= 70) {
+                if(Math.random() > petAffection/100) {
+                    document.getElementById("toiletStatus").innerText = "宠物情绪不佳，不让你如厕！";
+                    return;
+                }
+            }
+            points -= 50;
+            localStorage.setItem('points', points);
+            document.getElementById("points-value").innerText = points;
+            if (toiletCount > 0) {
+                toiletCount--;
+                localStorage.setItem('toiletCount', toiletCount);
+                document.getElementById("toiletCount").innerText = toiletCount;
+                document.getElementById("toiletStatus").innerText = "如厕申请通过！";
+            } else {
+                document.getElementById("toiletStatus").innerText = "今日如厕次数已达上限！";
+            }
         }
 
-        // 每30秒自动添加一个新任务
-        setInterval(addPeriodicTask, 30000);
+        // 随机惩罚任务
+        function randomPunishment() {
+            const punishment = punishments[Math.floor(Math.random() * punishments.length)];
+            document.getElementById("punishmentResult").innerText = "随机任务: " + punishment;
+        }
     </script>
 </body>
 </html>
