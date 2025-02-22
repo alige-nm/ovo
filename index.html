@@ -62,9 +62,7 @@
       margin: 3px; 
       font-size: 16px;
     }
-    /* 新增宠物选择样式 */
     #petAvatar { margin-top: 10px; max-width:150px; }
-    /* 哥哥面板 */
     #brotherMessage { margin-top: 10px; font-weight: bold; color: #a00; }
   </style>
 </head>
@@ -83,7 +81,7 @@
       <a href="#" onclick="showPage('brother')" class="box">哥哥</a>
     </div>
 
-    <!-- 每日任务 -->
+    <!-- 每日任务（60条） -->
     <div id="tasks" style="display:none;">
       <h2>每日任务</h2>
       <ul class="task-list">
@@ -97,56 +95,56 @@
         <li><button onclick="completeTask(35)">上厕所前深蹲20次 (+35分)</button></li>
         <li><button onclick="completeTask(50)">忍尿1小时 (+50分)</button></li>
         <li><button onclick="completeTask(-30)">申请失败一次 (-30分)</button></li>
-       <li><button onclick="completeTask(11)"> 揉膀胱6分钟 (+11分)</button></li>
-       <li><button onclick="completeTask(17)"> 按压膀胱12次 (+17分)</button></li>
-      <li><button onclick="completeTask(23)"> 多喝600ml水 (+23分)</button></li>
-      <li><button onclick="completeTask(-11)"> 未完成任务 (-11分)</button></li>
-      <li><button onclick="completeTask(27)"> 坐立6分钟不动 (+27分)</button></li>
-     <li><button onclick="completeTask(-21)"> 偷懒一次 (-21分)</button></li>
-     <li><button onclick="completeTask(33)"> 保持尿意40分钟 (+33分)</button></li>
-     <li><button onclick="completeTask(37)"> 上厕所前深蹲18次 (+37分)</button></li>
-     <li><button onclick="completeTask(52)"> 忍尿1.2小时 (+52分)</button></li>
-     <li><button onclick="completeTask(-32)"> 申请失败一次 (-32分)</button></li>
-     <li><button onclick="completeTask(13)"> 按摩膀胱7分钟 (+13分)</button></li>
-     <li><button onclick="completeTask(19)"> 压膀胱14次 (+19分)</button></li>
-     <li><button onclick="completeTask(21)"> 补充500ml温水 (+21分)</button></li>
-     <li><button onclick="completeTask(-13)"> 未完成规定任务 (-13分)</button></li>
-     <li><button onclick="completeTask(29)"> 坐立7分钟不动 (+29分)</button></li>
-     <li><button onclick="completeTask(-24)"> 偷懒行为一次 (-24分)</button></li>
-     <li><button onclick="completeTask(34)"> 持续尿意45分钟 (+34分)</button></li>
-     <li><button onclick="completeTask(36)"> 上厕所前做深蹲15次 (+36分)</button></li>
-     <li><button onclick="completeTask(48)"> 忍尿90分钟 (+48分)</button></li>
-     <li><button onclick="completeTask(-33)"> 申请如厕失败 (-33分)</button></li>
-     <li><button onclick="completeTask(14)"> 揉膀胱8分钟 (+14分)</button></li>
-     <li><button onclick="completeTask(16)"> 按压膀胱11次 (+16分)</button></li>
-     <li><button onclick="completeTask(24)"> 快速喝600ml水 (+24分)</button></li>
-     <li><button onclick="completeTask(-14)"> 未完成任务扣分 (-14分)</button></li>
-     <li><button onclick="completeTask(30)"> 坐立8分钟不动 (+30分)</button></li>
-     <li><button onclick="completeTask(-26)"> 偷懒一次扣分 (-26分)</button></li>
-     <li><button onclick="completeTask(38)"> 保持尿意50分钟 (+38分)</button></li>
-     <li><button onclick="completeTask(42)"> 上厕所前做深蹲22次 (+42分)</button></li>
-     <li><button onclick="completeTask(54)"> 忍尿1.3小时 (+54分)</button></li>
-     <li><button onclick="completeTask(-40)"> 申请失败扣分 (-40分)</button></li>
-     <li><button onclick="completeTask(15)"> 揉膀胱9分钟 (+15分)</button></li>
-     <li><button onclick="completeTask(20)"> 按压膀胱13次 (+20分)</button></li>
-     <li><button onclick="completeTask(26)"> 多喝650ml水 (+26分)</button></li>
-     <li><button onclick="completeTask(-16)"> 未完成任务扣分 (-16分)</button></li>
-     <li><button onclick="completeTask(32)"> 坐立9分钟不动 (+32分)</button></li>
-     <li><button onclick="completeTask(-28)"> 偷懒扣分一次 (-28分)</button></li>
-     <li><button onclick="completeTask(40)"> 保持尿意55分钟 (+40分)</button></li>
-     <li><button onclick="completeTask(44)"> 上厕所前深蹲24次 (+44分)</button></li>
-     <li><button onclick="completeTask(56)"> 忍尿1.4小时 (+56分)</button></li>
-     <li><button onclick="completeTask(-42)"> 申请失败扣分 (-42分)</button></li>
-     <li><button onclick="completeTask(31)"> 按摩膀胱10分钟 (+31分)</button></li>
-     <li><button onclick="completeTask(62)"> 保持尿意60分钟 (+62分)</button></li>
-     <li><button onclick="completeTask(28)"> 按压膀胱15次 (+28分)</button></li>
-     <li><button onclick="completeTask(35)"> 按压膀胱18次 (+35分)</button></li>
-     <li><button onclick="completeTask(39)"> 多喝700ml水 (+39分)</button></li>
-     <li><button onclick="completeTask(41)"> 坐立7分钟不动 (+41分)</button></li>
-     <li><button onclick="completeTask(-30)"> 偷懒一次 (-30分)</button></li>
-     <li><button onclick="completeTask(66)"> 保持尿意65分钟 (+66分)</button></li>
-     <li><button onclick="completeTask(46)"> 上厕所前深蹲20次 (+46分)</button></li>
-     <li><button onclick="completeTask(70)"> 忍尿1.6小时 (+70分)</button></li>
+        <li><button onclick="completeTask(11)">揉膀胱6分钟 (+11分)</button></li>
+        <li><button onclick="completeTask(17)">按压膀胱12次 (+17分)</button></li>
+        <li><button onclick="completeTask(23)">多喝600ml水 (+23分)</button></li>
+        <li><button onclick="completeTask(-11)">未完成任务 (-11分)</button></li>
+        <li><button onclick="completeTask(27)">坐立6分钟不动 (+27分)</button></li>
+        <li><button onclick="completeTask(-21)">偷懒一次 (-21分)</button></li>
+        <li><button onclick="completeTask(33)">保持尿意40分钟 (+33分)</button></li>
+        <li><button onclick="completeTask(37)">上厕所前深蹲18次 (+37分)</button></li>
+        <li><button onclick="completeTask(52)">忍尿1.2小时 (+52分)</button></li>
+        <li><button onclick="completeTask(-32)">申请失败一次 (-32分)</button></li>
+        <li><button onclick="completeTask(13)">按摩膀胱7分钟 (+13分)</button></li>
+        <li><button onclick="completeTask(19)">压膀胱14次 (+19分)</button></li>
+        <li><button onclick="completeTask(21)">补充500ml温水 (+21分)</button></li>
+        <li><button onclick="completeTask(-13)">未完成规定任务 (-13分)</button></li>
+        <li><button onclick="completeTask(29)">坐立7分钟不动 (+29分)</button></li>
+        <li><button onclick="completeTask(-24)">偷懒行为一次 (-24分)</button></li>
+        <li><button onclick="completeTask(34)">持续尿意45分钟 (+34分)</button></li>
+        <li><button onclick="completeTask(36)">上厕所前做深蹲15次 (+36分)</button></li>
+        <li><button onclick="completeTask(48)">忍尿90分钟 (+48分)</button></li>
+        <li><button onclick="completeTask(-33)">申请如厕失败 (-33分)</button></li>
+        <li><button onclick="completeTask(14)">揉膀胱8分钟 (+14分)</button></li>
+        <li><button onclick="completeTask(16)">按压膀胱11次 (+16分)</button></li>
+        <li><button onclick="completeTask(24)">快速喝600ml水 (+24分)</button></li>
+        <li><button onclick="completeTask(-14)">未完成任务扣分 (-14分)</button></li>
+        <li><button onclick="completeTask(30)">坐立8分钟不动 (+30分)</button></li>
+        <li><button onclick="completeTask(-26)">偷懒一次扣分 (-26分)</button></li>
+        <li><button onclick="completeTask(38)">保持尿意50分钟 (+38分)</button></li>
+        <li><button onclick="completeTask(42)">上厕所前做深蹲22次 (+42分)</button></li>
+        <li><button onclick="completeTask(54)">忍尿1.3小时 (+54分)</button></li>
+        <li><button onclick="completeTask(-40)">申请失败扣分 (-40分)</button></li>
+        <li><button onclick="completeTask(15)">揉膀胱9分钟 (+15分)</button></li>
+        <li><button onclick="completeTask(20)">按压膀胱13次 (+20分)</button></li>
+        <li><button onclick="completeTask(26)">多喝650ml水 (+26分)</button></li>
+        <li><button onclick="completeTask(-16)">未完成任务扣分 (-16分)</button></li>
+        <li><button onclick="completeTask(32)">坐立9分钟不动 (+32分)</button></li>
+        <li><button onclick="completeTask(-28)">偷懒扣分一次 (-28分)</button></li>
+        <li><button onclick="completeTask(40)">保持尿意55分钟 (+40分)</button></li>
+        <li><button onclick="completeTask(44)">上厕所前深蹲24次 (+44分)</button></li>
+        <li><button onclick="completeTask(56)">忍尿1.4小时 (+56分)</button></li>
+        <li><button onclick="completeTask(-42)">申请失败扣分 (-42分)</button></li>
+        <li><button onclick="completeTask(31)">按摩膀胱10分钟 (+31分)</button></li>
+        <li><button onclick="completeTask(62)">保持尿意60分钟 (+62分)</button></li>
+        <li><button onclick="completeTask(28)">按压膀胱15次 (+28分)</button></li>
+        <li><button onclick="completeTask(35)">按压膀胱18次 (+35分)</button></li>
+        <li><button onclick="completeTask(39)">多喝700ml水 (+39分)</button></li>
+        <li><button onclick="completeTask(41)">坐立7分钟不动 (+41分)</button></li>
+        <li><button onclick="completeTask(-30)">偷懒一次 (-30分)</button></li>
+        <li><button onclick="completeTask(66)">保持尿意65分钟 (+66分)</button></li>
+        <li><button onclick="completeTask(46)">上厕所前深蹲20次 (+46分)</button></li>
+        <li><button onclick="completeTask(70)">忍尿1.6小时 (+70分)</button></li>
       </ul>
       <h3>新任务</h3>
       <ul id="periodic-tasks"></ul>
@@ -167,7 +165,7 @@
     <!-- 便签 -->
     <div id="sticky" style="display:none;">
       <h2>便签</h2>
-      <textarea id="stickyNoteText" rows="4" placeholder="在此输入便签..."></textarea><br>
+      <textarea id="stickyNoteText" rows="4" placeholder="在这儿记下你有多废物..."></textarea><br>
       <button onclick="saveStickyNote()">保存便签</button>
       <button onclick="viewStickyNoteHistory()">查看历史便签</button>
       <p id="stickyNoteDisplay"></p>
@@ -177,8 +175,7 @@
     <!-- 养宠 -->
     <div id="petCare" style="display:none;">
       <h2>养宠</h2>
-      <!-- 宠物选择 -->
-      <label for="petSelect">选择宠物：</label>
+      <label for="petSelect">选个宠物折磨你：</label>
       <select id="petSelect" onchange="changePetAvatar()">
         <option value="cat">小猫</option>
         <option value="dog">小狗</option>
@@ -202,7 +199,7 @@
     <!-- 计算机 -->
     <div id="calculator" style="display:none;">
       <h2>计算机</h2>
-      <input type="text" id="calcDisplay" readonly style="width: 180px; font-size: 18px;"><br>
+      <input type="text" id="calcDisplay" style="width: 180px; font-size: 18px;"><br>
       <div id="calcButtons">
         <button onclick="appendCalc('7')">7</button>
         <button onclick="appendCalc('8')">8</button>
@@ -254,7 +251,7 @@
   </div>
 
   <script>
-    // 初始化积分、如厕次数及宠物和历史记录数据
+    // 初始化数据
     let points = localStorage.getItem('points') ? parseInt(localStorage.getItem('points')) : 0;
     let toiletCount = localStorage.getItem('toiletCount') ? parseInt(localStorage.getItem('toiletCount')) : 3;
     let petToiletStatus = localStorage.getItem('petToiletStatus') === "true";
@@ -275,134 +272,204 @@
       "连续写小说500字",
       "手撑膀胱不动1分钟",
       "喝300ml水",
-      "闭眼冥想5分钟"
+      "闭眼冥想5分钟",
+      "憋尿额外30分钟",
+      "做100个俯卧撑",
+      "写1000字检讨",
+      "禁止看手机1小时",
+      "跪着写作业30分钟",
+      "喝500ml水",
+      "做50个仰卧起坐",
+      "揉膀胱10分钟",
+      "按压膀胱20次",
+      "憋尿至极限"
     ];
 
-    // 宠物行动冷却状态
     let petReady = true;
 
-    // 哥哥的话
+    // 哥哥的话（100条，黄暴、辱骂、羞辱）
     const brotherMessages = [
-  " 别让我失望，小宇！你再不努力，连如厕资格都别想要。",
-  " 记住，每一步都得严格执行，宠物和我都不允许你偷懒！",
-  " 你这家伙，连宠物都讨厌你，还想轻易如厕？赶快改正！",
-  " 看清楚了，每一次惩罚都是为了让你更好地进步。",
-  " 哥哥在这里盯着你，别以为可以逃避责任！",
-  " 你不配偷懒，任何松懈都将付出代价。",
-  " 每一步都要走得艰难点，只有痛苦才能让你进步。",
-  " 不要以为我不会发现你的小动作，所有偷懒的行为都不会放过。",
-  " 你想让我对你温柔？没可能，只有冷酷才会成就你。",
-  " 你以为可以轻松过关？告诉你，这个世界没那么简单。",
-  " 记住，你的每一次失败，都是对我耐心的挑战。",
-  " 别想着逃避，我的眼睛比你想象的要锐利。",
-  " 想要尊重？先拿出点值得让我尊敬的东西。",
-  " 你可以逃避一时，但逃不了一辈子。",
-  " 你如果再这么轻松，永远也没资格成为强者。",
-  " 每一步的训练，不是为了讨好你，而是为了让你更强。",
-  " 你还敢抱怨？不自觉的你，永远也不会得到任何宽容。",
-  " 一切都靠自己，别再指望任何人给你救赎。",
-  " 我说过，只有忍耐和控制，才能带来真正的力量。",
-  " 你不想努力吗？那就永远停留在原地，别想着进步。",
-  " 你不认真点，连宠物都看不起你，更别提我了。",
-  " 你最好记住，哥哥对你的期望并不会因为你懒惰而减少。",
-  " 你现在的懈怠，只会让我更加冷酷无情。",
-  " 别觉得我对你不好，只是你不够努力，才导致这一切。",
-  " 我不会心软，任何失误都将毫不犹豫地惩罚。",
-  " 如果你觉得自己能偷懒，那么你早晚会被淘汰。",
-  " 我对你没有一点儿耐心，只会看着你犯错，直到你改正。",
-  " 不努力，你的世界将被我无情地碾碎。",
-  " 你不想做到最好吗？那就不要再出现在我面前。",
-  " 哥哥的要求，你永远达不到，除非你全力以赴。",
-  " 不想承受惩罚就努力，不然每一步都将如同地狱。",
-  " 你再不努力，甚至连简单的任务都会难倒你。",
-  " 你根本不明白，放纵只会让自己堕落得更快。",
-  " 我对你不会心软，任何不争气的举动都将被严惩。",
-  " 你想让我对你好？那就表现出值得我好的一面。",
-  " 每一次偷懒，都是在加深我对你的失望。",
-  " 你以为自己可以随便懒惰？别做梦了，你永远都达不到标准。",
-  " 我没有时间忍受你的懒惰，要么奋斗，要么永远落后。",
-  " 你根本不配享受任何放松，只有痛苦才是你应得的。",
-  " 你敢不听话，哥哥一定会让你明白后果。",
-  " 不要让我失望，再松懈一下，连厕所都不配进了。",
-  " 你不配有任何的特权，只有严格执行才是唯一的道路。",
-  " 你以为我会放过你的一丝懈怠？从来没有。",
-  " 每一次你失败，都是我看你无能的一刻。",
-  " 你要是不能完全控制自己，那就永远在原地打转。",
-  " 别想着偷懒，任何失误都将在我的眼皮底下被发现。",
-  " 你是否已经意识到，自己根本不配要求任何的轻松？",
-  " 没有资格感到安慰，只有面对挑战和压力，才能走得更远。",
-  " 我不会对你宽容，只有严格要求，才能真正看到你进步。",
-  " 如果你不愿付出，连最基本的任务都做不好。",
-  " 你能忍得住吗？再放松一下，看看结果。",
-  " 记住，我不会对任何偷懒的行为容忍，执行力是唯一的标准。",
-  " 你一直在挑战我的耐心，你就等着看我怎么惩罚你。",
-  " 你必须通过努力和忍耐，才能有资格进入更高的阶段。",
-  " 想得到一切？那就先从自己开始严格要求起。",
-  " 你可以试着不听话，但最后吃亏的永远是你自己。",
-  " 只有完全掌控自己，才能不被这个世界击倒。",
-  " 我对你的宽容，只有在你真的足够努力的时候才会出现。",
-  " 每一次你的软弱，都是对我的不尊重，绝不能容忍。",
-  " 你现在的每一点松懈，都会让我更冷漠地对待你。",
-  " 别以为我会纵容你，只会让你痛苦地意识到自己的失败。",
-  " 你最好记住，想要进步，就得踏过一切的懒惰。",
-  " 你每一分懈怠，我都会毫不犹豫地惩罚，直到你觉醒！"
-];
+      "你这废物，再不努力，连尿都别想撒！",
+      "哥哥盯着你呢，敢偷懒就等着被我罚死吧！",
+      "连宠物都看不起你这懒鬼，还想上厕所？做梦！",
+      "每一次惩罚都是为了让你这贱货进步！",
+      "你他妈不配偷懒，给我使劲憋着！",
+      "想让我对你温柔？没门！只有痛苦才能让你变强！",
+      "你这废物，再不听话，我就让你憋到爆！",
+      "别以为我不知道你偷懒，我会让你后悔的！",
+      "你要是敢再偷懒，我就让你尿裤子！",
+      "你这贱货，永远别想逃过我的手掌心！",
+      "你这废物，连最基本的任务都完不成？",
+      "哥哥对你失望透顶，你这辈子都别想让我满意！",
+      "你要是敢再偷懒，我就让你在众人面前尿裤子！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！",
+      "你以为你是谁？在我面前你就是个废物！",
+      "你这废物，连最简单的任务都做不好！",
+      "你要是敢再偷懒，我就让你在众人面前出丑！",
+      "你这贱人，给我憋着，不许去厕所！",
+      "你以为你是个人物？在我眼里你连条狗都不如！",
+      "你这废物，连宠物都比你强！",
+      "你要是再不努力，我就让你一辈子憋尿！",
+      "你这贱货，给我忍着，不许去！"
+    ];
 
-    // 宠物额外事件（至少10个）
+    // 宠物额外事件（100条，黄暴、辱骂、羞辱）
     const petExtraEvents = [
-      { description: "你不小心把水碗撞倒了！", affectionChange: -20, punishment: "喝300ml水", penaltyPoints: 0 },
-      { description: "宠物发现你偷懒，狠狠地瞪了你一眼！", affectionChange: -10, punishment: "积分减少10分", penaltyPoints: 10 },
-      { description: "宠物故意把食物撒了一地！", affectionChange: -15, punishment: "清理5分钟", penaltyPoints: 0 },
-      { description: "宠物突然发脾气，推倒了你的杯子！", affectionChange: -25, punishment: "喝500ml水", penaltyPoints: 0 },
-      { description: "宠物在房间里乱跑，把你的便签弄丢了！", affectionChange: -5, punishment: "便签记录丢失", penaltyPoints: 0 },
-      { description: "宠物趁你不注意偷吃了你的点心！", affectionChange: -10, punishment: "扣除20积分", penaltyPoints: 20 },
-      { description: "宠物弄脏了地板，让你清理！", affectionChange: -15, punishment: "清理后扣10积分", penaltyPoints: 10 },
-      { description: "宠物看到你糟糕的表现，心情大坏！", affectionChange: -20, punishment: "积分减少50分", penaltyPoints: 50 },
-      { description: "宠物把你的作业撕成碎片！", affectionChange: -30, punishment: "你需要重做作业", penaltyPoints: 0 },
-      { description: "宠物发出不满的嘶鸣，彻底不信任你！", affectionChange: -40, punishment: "积分扣除100分", penaltyPoints: 100 }
-     { description: "宠物猛然跃起，将水碗猛撞翻，水花四溅。", affectionChange: -20, punishment: "写500字小说反思忍耐", penaltyPoints: 10 },
-     { description: "宠物疾步冲向桌边，用爪猛拍桌面，物品纷飞。", affectionChange: -15, punishment: "扣除10积分", penaltyPoints: 10 },
-     { description: "宠物突然扑向地面，用力踩碎零食包装。", affectionChange: -25, punishment: "罚你站立10分钟", penaltyPoints: 15 },
-     { description: "宠物猛地甩动尾巴，撞倒旁边的杯子。", affectionChange: -20, punishment: "写一篇检讨", penaltyPoints: 10 },
-     { description: "宠物用前爪猛抓便签，将记录撕得粉碎。", affectionChange: -30, punishment: "扣除20积分", penaltyPoints: 20 },
-     { description: "宠物突然扑向你的脚边，用力蹭过裤脚，动作决绝。", affectionChange: -10, punishment: "罚你做20个俯卧撑", penaltyPoints: 5 },
-     { description: "宠物猛冲上桌，将水杯撞飞，溅起大片水花。", affectionChange: -25, punishment: "罚你喝一杯冰水", penaltyPoints: 15 },
-     { description: "宠物在你周围急速转圈，尾巴不停甩动，表示不耐。", affectionChange: -15, punishment: "扣除15积分", penaltyPoints: 10 },
-    { description: "宠物猛跃起来，用力撞击桌角，物品散落一地。", affectionChange: -20, punishment: "罚你写100字检讨", penaltyPoints: 10 },
-    { description: "宠物突然跳起，用力撞击桌面，打翻所有物品。", affectionChange: -30, punishment: "扣除30积分", penaltyPoints: 20 },
-    { description: "宠物急速跑过，用爪猛拍墙面，留下深深爪痕。", affectionChange: -25, punishment: "罚你写一篇长检讨", penaltyPoints: 15 },
-    { description: "宠物迅速冲向垃圾桶，将桶内物品全部甩出。", affectionChange: -20, punishment: "罚你整理房间", penaltyPoints: 15 },
-    { description: "宠物猛地钻进你的书堆，弄得书籍杂乱无章。", affectionChange: -30, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物突然跳上桌面，重重踩在文件上，文件散落一地。", affectionChange: -25, punishment: "罚你重排书桌", penaltyPoints: 15 },
-    { description: "宠物猛力推倒笔筒，笔散落四处。", affectionChange: -20, punishment: "罚你写一篇短文反思", penaltyPoints: 10 },
-    { description: "宠物急速转身，用冷漠眼神扫视后猛然离去。", affectionChange: -35, punishment: "扣除10积分", penaltyPoints: 10 },
-    { description: "宠物飞快奔跑，将角落玩具撞得粉碎。", affectionChange: -20, punishment: "罚你做30个深蹲", penaltyPoints: 15 },
-    { description: "宠物猛甩尾巴，将桌上水杯猛撞，水洒满地。", affectionChange: -25, punishment: "罚你写200字检讨", penaltyPoints: 15 },
-    { description: "宠物扑向地板，用力抓挠，留下明显爪印。", affectionChange: -20, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物快速绕过你，用力蹭过你的腿，冷漠拒绝接近。", affectionChange: -15, punishment: "罚你做10分钟静坐", penaltyPoints: 10 },
-    { description: "宠物猛然冲向桌边，撞倒水瓶，水流四溅。", affectionChange: -20, punishment: "罚你写300字反思", penaltyPoints: 15 },
-    { description: "宠物急速跑到文件堆前，用爪猛推，文件散乱。", affectionChange: -30, punishment: "扣除25积分", penaltyPoints: 20 },
-    { description: "宠物猛地跃起，将书桌上所有物品撞倒。", affectionChange: -25, punishment: "罚你整理书桌30秒", penaltyPoints: 15 },
-    { description: "宠物用力甩动尾巴，将你的笔记猛拍散落。", affectionChange: -20, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物迅速冲向沙发，将靠垫撞飞，动作极快。", affectionChange: -15, punishment: "罚你做10个俯卧撑", penaltyPoints: 10 },
-    { description: "宠物猛地跳起，用前爪猛推水杯，水花四射。", affectionChange: -25, punishment: "罚你坚持站立5分钟", penaltyPoints: 15 },
-    { description: "宠物快速绕行，用尾巴猛烈扫过桌面，将物品打翻。", affectionChange: -20, punishment: "扣除15积分", penaltyPoints: 10 },
-    { description: "宠物猛冲至桌角，用力撞击，发出沉闷撞击声。", affectionChange: -30, punishment: "罚你写一篇长文检讨", penaltyPoints: 20 },
-    { description: "宠物迅速用爪抓挠桌面，留下长长的划痕。", affectionChange: -25, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物猛地跳起，将旁边的便签从墙上撕下。", affectionChange: -20, punishment: "罚你整理便签记录", penaltyPoints: 10 },
-    { description: "宠物急速绕着你跑，用尾巴猛烈甩动将桌上物品击落。", affectionChange: -30, punishment: "扣除25积分", penaltyPoints: 20 },
-    { description: "宠物突然从角落窜出，撞翻你的水杯，水洒一地。", affectionChange: -25, punishment: "罚你做20次俯卧撑", penaltyPoints: 15 },
-    { description: "宠物猛然跃起，用力撞击窗台，震碎部分装饰。", affectionChange: -20, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物急速冲向你的书本，将书本重重摔在地上。", affectionChange: -30, punishment: "罚你重写一篇日记", penaltyPoints: 20 },
-    { description: "宠物用力甩动尾巴，将桌上所有笔乱扫一地。", affectionChange: -25, punishment: "扣除15积分", penaltyPoints: 15 },
-    { description: "宠物猛地扑向垃圾桶，将垃圾全都撞出。", affectionChange: -20, punishment: "罚你整理垃圾", penaltyPoints: 10 },
-    { description: "宠物迅速冲到桌前，用爪猛推所有文件，文件纷飞。", affectionChange: -30, punishment: "扣除25积分", penaltyPoints: 20 },
-    { description: "宠物猛然跃起，将水瓶重重摔下，水洒四溅。", affectionChange: -25, punishment: "罚你写一篇长篇检讨", penaltyPoints: 20 },
-    { description: "宠物急速绕行，用尾巴猛甩，将桌上物品全打翻。", affectionChange: -20, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物突然冲向书桌，用力抓挠桌面，留下深深爪痕。", affectionChange: -30, punishment: "罚你做30个深蹲", penaltyPoints: 20 },
-    { description: "宠物猛然转身，用尾巴重重抽打文件堆，文件纷纷散落。", affectionChange: -25, punishment: "扣除20积分", penaltyPoints: 15 },
-    { description: "宠物用力撞向桌角，发出沉重撞击声，气势逼人。", affectionChange: -20, punishment: "罚你坚持站立10分钟", penaltyPoints: 15 },
-    { description: "宠物最后用力一跃，猛撞水瓶，水花飞溅，宣示极度不满。", affectionChange: -40, punishment: "罚你写一篇长篇小说", penaltyPoints: 30 }
+      { description: "你这蠢货把水碗撞倒了！", affectionChange: -20, punishment: "喝300ml水憋着！", penaltyPoints: 0 },
+      { description: "宠物发现你偷懒，狠狠地咬了你一口！", affectionChange: -10, punishment: "积分减少10分，你这废物！", penaltyPoints: 10 },
+      { description: "宠物故意把食物撒了一地，你这猪！", affectionChange: -15, punishment: "清理5分钟，不然别想吃饭！", penaltyPoints: 0 },
+      { description: "宠物发脾气，推倒了你的杯子，你活该！", affectionChange: -25, punishment: "喝500ml水憋着！", penaltyPoints: 0 },
+      { description: "宠物把你的便签弄丢了，你这笨蛋！", affectionChange: -5, punishment: "便签记录丢失，活该！", penaltyPoints: 0 },
+      { description: "宠物偷吃了你的点心，你这废物！", affectionChange: -10, punishment: "扣除20积分，你活该！", penaltyPoints: 20 },
+      { description: "宠物弄脏了地板，你这猪！", affectionChange: -15, punishment: "清理后扣10积分，你活该！", penaltyPoints: 10 },
+      { description: "宠物看你表现差，气得要死！", affectionChange: -20, punishment: "积分减少50分，你这废物！", penaltyPoints: 50 },
+      { description: "宠物把你的作业撕成碎片，你活该！", affectionChange: -30, punishment: "重做作业，你这蠢货！", penaltyPoints: 0 },
+      { description: "宠物对你彻底失望，不信任你这废物！", affectionChange: -40, punishment: "积分扣除100分，你活该！", penaltyPoints: 100 },
+      { description: "宠物在你裤子上撒尿，你这废物！", affectionChange: -50, punishment: "憋尿1小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的手，你这蠢货！", affectionChange: -10, punishment: "写500字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的鞋子咬坏了，你这废物！", affectionChange: -20, punishment: "做50个俯卧撑，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你床上拉屎，你这猪！", affectionChange: -30, punishment: "清理后写1000字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的衣服撕烂了，你这废物！", affectionChange: -40, punishment: "憋尿2小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你脸上挠了一爪，你这蠢货！", affectionChange: -50, punishment: "做100个深蹲，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的书撕成碎片，你这废物！", affectionChange: -60, punishment: "重写一篇日记，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你食物里撒尿，你这猪！", affectionChange: -70, punishment: "饿一顿，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的脚，你这蠢货！", affectionChange: -80, punishment: "站立不动30分钟，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的手机摔坏了，你这废物！", affectionChange: -90, punishment: "禁止使用手机1天，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你床上撒尿，你这猪！", affectionChange: -100, punishment: "憋尿3小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的耳朵，你这蠢货！", affectionChange: -10, punishment: "写600字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的袜子咬烂了，你这废物！", affectionChange: -20, punishment: "做60个俯卧撑，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你的枕头上拉屎，你这猪！", affectionChange: -30, punishment: "清理后写1200字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的裤子撕烂了，你这废物！", affectionChange: -40, punishment: "憋尿2.5小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你头上挠了一爪，你这蠢货！", affectionChange: -50, punishment: "做120个深蹲，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的笔记本撕成碎片，你这废物！", affectionChange: -60, punishment: "重写一篇日记，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你水杯里撒尿，你这猪！", affectionChange: -70, punishment: "饿一顿，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的腿，你这蠢货！", affectionChange: -80, punishment: "站立不动40分钟，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的平板摔坏了，你这废物！", affectionChange: -90, punishment: "禁止使用电子设备1天，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你沙发上撒尿，你这猪！", affectionChange: -100, punishment: "憋尿4小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的手指，你这蠢货！", affectionChange: -10, punishment: "写700字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的拖鞋咬坏了，你这废物！", affectionChange: -20, punishment: "做70个俯卧撑，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你的地毯上拉屎，你这猪！", affectionChange: -30, punishment: "清理后写1500字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的衬衫撕烂了，你这废物！", affectionChange: -40, punishment: "憋尿3小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你脖子上挠了一爪，你这蠢货！", affectionChange: -50, punishment: "做150个深蹲，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的杂志撕成碎片，你这废物！", affectionChange: -60, punishment: "重写一篇日记，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你饭盒里撒尿，你这猪！", affectionChange: -70, punishment: "饿一顿，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的脚趾，你这蠢货！", affectionChange: -80, punishment: "站立不动50分钟，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的耳机摔坏了，你这废物！", affectionChange: -90, punishment: "禁止听音乐1天，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你椅子背上撒尿，你这猪！", affectionChange: -100, punishment: "憋尿5小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的手臂，你这蠢货！", affectionChange: -10, punishment: "写800字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的帽子咬坏了，你这废物！", affectionChange: -20, punishment: "做80个俯卧撑，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你的窗帘上拉屎，你这猪！", affectionChange: -30, punishment: "清理后写2000字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的外套撕烂了，你这废物！", affectionChange: -40, punishment: "憋尿3.5小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你肩膀上挠了一爪，你这蠢货！", affectionChange: -50, punishment: "做200个深蹲，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的日历撕成碎片，你这废物！", affectionChange: -60, punishment: "重写一篇日记，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你汤碗里撒尿，你这猪！", affectionChange: -70, punishment: "饿一顿，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的膝盖，你这蠢货！", affectionChange: -80, punishment: "站立不动60分钟，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的遥控器摔坏了，你这废物！", affectionChange: -90, punishment: "禁止看电视1天，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你书桌上撒尿，你这猪！", affectionChange: -100, punishment: "憋尿6小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的手腕，你这蠢货！", affectionChange: -10, punishment: "写900字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的围巾咬坏了，你这废物！", affectionChange: -20, punishment: "做90个俯卧撑，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你的床单上拉屎，你这猪！", affectionChange: -30, punishment: "清理后写2500字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的运动裤撕烂了，你这废物！", affectionChange: -40, punishment: "憋尿4小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你背上挠了一爪，你这蠢货！", affectionChange: -50, punishment: "做250个深蹲，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的报纸撕成碎片，你这废物！", affectionChange: -60, punishment: "重写一篇日记，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你果汁里撒尿，你这猪！", affectionChange: -70, punishment: "饿一顿，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的脚踝，你这蠢货！", affectionChange: -80, punishment: "站立不动70分钟，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的充电器摔坏了，你这废物！", affectionChange: -90, punishment: "禁止充电1天，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你地板上撒尿，你这猪！", affectionChange: -100, punishment: "憋尿7小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的手背，你这蠢货！", affectionChange: -10, punishment: "写1000字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的手套咬坏了，你这废物！", affectionChange: -20, punishment: "做100个俯卧撑，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你的被子上拉屎，你这猪！", affectionChange: -30, punishment: "清理后写3000字检讨，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的毛衣撕烂了，你这废物！", affectionChange: -40, punishment: "憋尿4.5小时，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你胸前挠了一爪，你这蠢货！", affectionChange: -50, punishment: "做300个深蹲，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的文件夹撕成碎片，你这废物！", affectionChange: -60, punishment: "重写一篇日记，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你咖啡里撒尿，你这猪！", affectionChange: -70, punishment: "饿一顿，你活该！", penaltyPoints: 0 },
+      { description: "宠物咬了你的肩膀，你这蠢货！", affectionChange: -80, punishment: "站立不动80分钟，你活该！", penaltyPoints: 0 },
+      { description: "宠物把你的鼠标摔坏了，你这废物！", affectionChange: -90, punishment: "禁止使用电脑1天，你活该！", penaltyPoints: 0 },
+      { description: "宠物在你桌子腿上撒尿，你这猪！", affectionChange: -100, punishment: "憋尿8小时，你活该！", penaltyPoints: 0 }
     ];
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -480,7 +547,7 @@
     function saveStickyNote() {
       const text = document.getElementById('stickyNoteText').value.trim();
       if (text === "") {
-        alert("请先输入便签内容！");
+        alert("你这废物，连便签都不写！");
         return;
       }
       stickyNote = text;
@@ -489,13 +556,13 @@
       stickyNoteHistory.push(record);
       localStorage.setItem('stickyNoteHistory', JSON.stringify(stickyNoteHistory));
       document.getElementById('stickyNoteDisplay').innerText = "便签内容: " + text;
-      alert("便签已保存！");
+      alert("便签已保存，别再丢了！");
     }
     function viewStickyNoteHistory() {
       const display = document.getElementById("stickyNoteHistoryDisplay");
       display.innerHTML = "<h3>历史便签记录:</h3>";
       if (stickyNoteHistory.length === 0) {
-        display.innerHTML += "<p>暂无记录</p>";
+        display.innerHTML += "<p>你这废物，连记录都没有</p>";
       } else {
         let list = document.createElement("ul");
         stickyNoteHistory.forEach(record => {
@@ -507,7 +574,7 @@
       }
     }
 
-    // 修改宠物形象：宠物选择功能
+    // 宠物选择功能
     function changePetAvatar() {
       const petSelect = document.getElementById("petSelect").value;
       const petAvatar = document.getElementById("petAvatar");
@@ -528,7 +595,6 @@
         if (petAffection < 0) petAffection = 0;
         localStorage.setItem('petAffection', petAffection);
         document.getElementById("petAffectionDisplay").innerText = petAffection;
-        // 处理惩罚，如扣积分或提示额外行为
         if (event.penaltyPoints > 0) {
           points = Math.max(points - event.penaltyPoints, 0);
           localStorage.setItem('points', points);
@@ -550,50 +616,50 @@
     }
     function triggerRandomPetEvent() {
       const events = [
-        "宠物突然跳起来打翻了水碗！",
-        "宠物开始追逐自己的尾巴。",
-        "宠物懒洋洋地伸了个懒腰。",
-        "宠物发出一声轻鸣，似乎在表达情绪。"
+        "宠物突然跳起来打翻了水碗，你这废物！",
+        "宠物开始追逐自己的尾巴，看你多蠢！",
+        "宠物懒洋洋地伸了个懒腰，比你还懒！",
+        "宠物发出一声轻鸣，嘲笑你这贱货！"
       ];
       let eventMsg = events[Math.floor(Math.random() * events.length)];
       document.getElementById("petEventMessage").innerText = eventMsg;
       setTimeout(() => { document.getElementById("petEventMessage").innerText = ""; }, 5000);
     }
 
-    // 宠物各项功能
+    // 宠物功能
     function petGoToToilet() {
-      if (!petReady) { alert("宠物正在忙，请稍候！"); return; }
+      if (!petReady) { alert("宠物忙着呢，你这蠢货别催！"); return; }
       petToiletStatus = true;
       localStorage.setItem('petToiletStatus', "true");
       document.getElementById("petToiletStatus").innerText = "完成";
       resetPetCooldown();
-      alert("宠物已如厕！");
+      alert("宠物已如厕，别再烦我！");
     }
     function petSleep() {
-      if (!petReady) { alert("宠物正在忙，请稍候！"); return; }
+      if (!petReady) { alert("宠物忙着呢，你这废物别吵！"); return; }
       petSleepStatus = true;
       localStorage.setItem('petSleepStatus', "true");
       document.getElementById("petSleepStatus").innerText = "完成";
       resetPetCooldown();
-      alert("宠物已睡觉！");
+      alert("宠物睡了，你也别偷懒！");
     }
     function petFeeding() {
-      if (!petReady) { alert("宠物正在忙，请稍候！"); return; }
+      if (!petReady) { alert("宠物忙着呢，你这猪别催！"); return; }
       petAffection += 10;
-      if(petAffection > 100) petAffection = 100;
+      if (petAffection > 100) petAffection = 100;
       localStorage.setItem('petAffection', petAffection);
       document.getElementById("petAffectionDisplay").innerText = petAffection;
       resetPetCooldown();
-      alert("宠物已喂食，好感度提升！");
+      alert("宠物吃饱了，你这废物也得努力！");
     }
     function petWatering() {
-      if (!petReady) { alert("宠物正在忙，请稍候！"); return; }
+      if (!petReady) { alert("宠物忙着呢，你这贱货别烦！"); return; }
       petAffection += 5;
-      if(petAffection > 100) petAffection = 100;
+      if (petAffection > 100) petAffection = 100;
       localStorage.setItem('petAffection', petAffection);
       document.getElementById("petAffectionDisplay").innerText = petAffection;
       resetPetCooldown();
-      alert("宠物已喂水，好感度提升！");
+      alert("宠物喝水了，你也别闲着！");
     }
     function resetPetStatus() {
       petToiletStatus = false;
@@ -602,52 +668,56 @@
       localStorage.setItem('petSleepStatus', "false");
       document.getElementById("petToiletStatus").innerText = "未完成";
       document.getElementById("petSleepStatus").innerText = "未完成";
-      alert("宠物状态已重置！");
+      alert("宠物状态重置，你这废物别再搞乱！");
     }
 
     // 计算机功能
     function appendCalc(value) {
-      document.getElementById("calcDisplay").value += value;
+      const display = document.getElementById("calcDisplay");
+      display.value += value;
     }
     function calculateResult() {
+      const display = document.getElementById("calcDisplay");
       try {
-        const result = eval(document.getElementById("calcDisplay").value);
-        document.getElementById("calcDisplay").value = result;
-      } catch (e) { alert("计算错误！"); }
+        const result = eval(display.value);
+        display.value = result || "0";
+      } catch (e) {
+        display.value = "错误，你这蠢货算错了吧！";
+        setTimeout(clearCalc, 1000);
+      }
     }
     function clearCalc() {
       document.getElementById("calcDisplay").value = "";
     }
 
-    // 如厕申请——检查各项条件及宠物好感度
+    // 如厕申请
     function applyToilet() {
       if (points < 50) {
-        document.getElementById("toiletStatus").innerText = "积分不足50，无法申请！";
+        document.getElementById("toiletStatus").innerText = "积分不够50，你这废物没资格上厕所！";
         return;
       }
       if (!stickyNote) {
-        document.getElementById("toiletStatus").innerText = "便签未记录，无法如厕！";
+        document.getElementById("toiletStatus").innerText = "便签没写，你这懒鬼想干嘛？";
         return;
       }
       if (!dailyPlanCompleted) {
-        document.getElementById("toiletStatus").innerText = "每日计划未完成，无法如厕！";
+        document.getElementById("toiletStatus").innerText = "每日计划没做完，给我憋着！";
         return;
       }
       if (!localStorage.getItem('petToiletStatus') || localStorage.getItem('petToiletStatus') !== "true") {
-        document.getElementById("toiletStatus").innerText = "宠物未如厕，无法如厕！";
+        document.getElementById("toiletStatus").innerText = "宠物没上厕所，你也别想去！";
         return;
       }
       if (!localStorage.getItem('petSleepStatus') || localStorage.getItem('petSleepStatus') !== "true") {
-        document.getElementById("toiletStatus").innerText = "宠物未睡觉，无法如厕！";
+        document.getElementById("toiletStatus").innerText = "宠物没睡觉，你也别想轻松！";
         return;
       }
-      // 根据宠物好感度判断是否允许如厕
-      if(petAffection < 30) {
-        document.getElementById("toiletStatus").innerText = "宠物好感度过低，不允许你如厕！";
+      if (petAffection < 30) {
+        document.getElementById("toiletStatus").innerText = "宠物讨厌你这废物，不让你去！";
         return;
       } else if (petAffection >= 30 && petAffection <= 70) {
-        if(Math.random() > petAffection/100) {
-          document.getElementById("toiletStatus").innerText = "宠物情绪不佳，不让你如厕！";
+        if (Math.random() > petAffection / 100) {
+          document.getElementById("toiletStatus").innerText = "宠物心情不好，滚回去憋着！";
           return;
         }
       }
@@ -658,9 +728,9 @@
         toiletCount--;
         localStorage.setItem('toiletCount', toiletCount);
         document.getElementById("toiletCount").innerText = toiletCount;
-        document.getElementById("toiletStatus").innerText = "如厕申请通过！";
+        document.getElementById("toiletStatus").innerText = "申请通过，去吧你这贱货！";
       } else {
-        document.getElementById("toiletStatus").innerText = "今日如厕次数已达上限！";
+        document.getElementById("toiletStatus").innerText = "今天没次数了，给我憋死！";
       }
     }
 
@@ -679,3 +749,4 @@
   </script>
 </body>
 </html>
+​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
