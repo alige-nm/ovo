@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>膀胱训练计划</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #d0e8ff; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            padding: 20px; 
+        }
+        h1 { color: #005baa; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px; 
+            margin-bottom: 20px;
+        }
+        .box { 
+            display: block; 
+            background-color: #69bff8; 
+            color: white; 
+            text-decoration: none; 
+            padding: 15px; 
+            border-radius: 8px; 
+            font-size: 16px; 
+        }
+        .box:hover { background-color: #3a91d8; }
+        button { 
+            padding: 8px 16px; 
+            font-size: 14px; 
+            margin: 5px; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 5px; 
+        }
+        .task-list, #dailyPlanList, #periodic-tasks { 
+            text-align: left; 
+            margin: 10px auto; 
+            max-width: 400px; 
+            list-style: none; 
+            padding: 0;
+        }
+        .task-list li, #dailyPlanList li, #periodic-tasks li { 
+            margin-bottom: 10px; 
+        }
+        textarea { 
+            width: 80%; 
+            max-width: 400px; 
+        }
+        #calcButtons button { 
+            width: 40px; 
+            height: 40px; 
+            margin: 3px; 
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>膀胱训练计划</h1>
+        <div class="grid">
+            <a href="#" onclick="showPage('tasks')" class="box">每日任务</a>
+            <a href="#" onclick="showPage('dailyPlan')" class="box">每日计划</a>
+            <a href="#" onclick="showPage('sticky')" class="box">便签</a>
+            <a href="#" onclick="showPage('petCare')" class="box">养宠</a>
+            <a href="#" onclick="showPage('calculator')" class="box">计算机</a>
+            <a href="#" onclick="showPage('points')" class="box">积分系统</a>
+            <a href="#" onclick="showPage('toilet')" class="box">如厕申请</a>
+            <a href="#" onclick="showPage('punishments')" class="box">惩罚与奖励</a>
+        </div>
+
+        <!-- 每日任务 -->
+        <div id="tasks" style="display:none;">
+            <h2>每日任务</h2>
+            <ul class="task-list">
+                <li><button onclick="completeTask(10)">揉膀胱5分钟 (+10分)</button></li>
+                <li><button onclick="completeTask(15)">按压膀胱10次 (+15分)</button></li>
+                <li><button onclick="completeTask(20)">多喝500ml水 (+20分)</button></li>
+                <li><button onclick="completeTask(-10)">未完成任务 (-10分)</button></li>
+                <li><button onclick="completeTask(25)">坐立5分钟不动 (+25分)</button></li>
+                <li><button onclick="completeTask(-20)">偷懒一次 (-20分)</button></li>
+                <li><button onclick="completeTask(30)">保持尿意30分钟 (+30分)</button></li>
+                <li><button onclick="completeTask(35)">上厕所前深蹲20次 (+35分)</button></li>
+                <li><button onclick="completeTask(50)">忍尿1小时 (+50分)</button></li>
+                <li><button onclick="completeTask(-30)">申请失败一次 (-30分)</button></li>
+            </ul>
+            <h3>新任务</h3>
+            <ul id="periodic-tasks"></ul>
+        </div>
+
+        <!-- 每日计划 -->
+        <div id="dailyPlan" style="display:none;">
+            <h2>每日计划</h2>
+            <ul id="dailyPlanList">
+                <li><input type="checkbox" onchange="updateDailyPlan()"> 吃早餐</li>
+                <li><input type="checkbox" onchange="updateDailyPlan()"> 完成作业</li>
+                <li><input type="checkbox" onchange="updateDailyPlan()"> 锻炼身体</li>
+            </ul>
+        </div>
+
+        <!-- 便签 -->
+        <div id="sticky" style="display:none;">
+            <h2>便签</h2>
+            <textarea id="stickyNoteText" rows="4" placeholder="在此输入便签..."></textarea><br>
+            <button onclick="saveStickyNote()">保存便签</button>
+            <p id="stickyNoteDisplay"></p>
+        </div>
+
+        <!-- 养宠 -->
+        <div id="petCare" style="display:none;">
+            <h2>养宠</h2>
+            <p>宠物如厕状态: <span id="petToiletStatus">未完成</span></p>
+            <p>宠物睡觉状态: <span id="petSleepStatus">未完成</span></p>
+            <button onclick="petGoToToilet()">宠物如厕</button>
+            <button onclick="petSleep()">宠物睡觉</button>
+            <button onclick="resetPetStatus()">重置宠物状态</button>
+        </div>
+
+        <!-- 计算机 -->
+        <div id="calculator" style="display:none;">
+            <h2>计算机</h2>
+            <input type="text" id="calcDisplay" readonly style="width: 180px; font-size: 18px;"><br>
+            <div id="calcButtons">
+                <button onclick="appendCalc('7')">7</button>
+                <button onclick="appendCalc('8')">8</button>
+                <button onclick="appendCalc('9')">9</button>
+                <button onclick="appendCalc('/')">/</button><br>
+                <button onclick="appendCalc('4')">4</button>
+                <button onclick="appendCalc('5')">5</button>
+                <button onclick="appendCalc('6')">6</button>
+                <button onclick="appendCalc('*')">*</button><br>
+                <button onclick="appendCalc('1')">1</button>
+                <button onclick="appendCalc('2')">2</button>
+                <button onclick="appendCalc('3')">3</button>
+                <button onclick="appendCalc('-')">-</button><br>
+                <button onclick="appendCalc('0')">0</button>
+                <button onclick="appendCalc('.')">.</button>
+                <button onclick="calculateResult()">=</button>
+                <button onclick="appendCalc('+')">+</button><br>
+                <button onclick="clearCalc()">清空</button>
+            </div>
+        </div>
+
+        <!-- 积分系统 -->
+        <div id="points" style="display:none;">
+            <h2>积分系统</h2>
+            <p>当前积分: <span id="points-value">0</span></p>
+        </div>
+
+        <!-- 如厕申请 -->
+        <div id="toilet" style="display:none;">
+            <h2>如厕申请</h2>
+            <p>剩余如厕次数: <span id="toiletCount">3</span></p>
+            <button onclick="applyToilet()">申请如厕</button>
+            <p id="toiletStatus"></p>
+        </div>
+
+        <!-- 惩罚与奖励 -->
+        <div id="punishments" style="display:none;">
+            <h2>惩罚与奖励</h2>
+            <button onclick="randomPunishment()">随机任务</button>
+            <p id="punishmentResult"></p>
+        </div>
+    </div>
+
+    <script>
+        // 初始化积分和如厕次数
+        let points = localStorage.getItem('points') ? parseInt(localStorage.getItem('points')) : 0;
+        let toiletCount = localStorage.getItem('toiletCount') ? parseInt(localStorage.getItem('toiletCount')) : 3;
+
+        // 加载宠物状态、每日计划状态和便签内容
+        let petToiletStatus = localStorage.getItem('petToiletStatus') === "true";
+        let petSleepStatus = localStorage.getItem('petSleepStatus') === "true";
+        let dailyPlanCompleted = localStorage.getItem('dailyPlanCompleted') === "true";
+        let stickyNote = localStorage.getItem('stickyNote') || "";
+
+        const punishments = [
+            "按压膀胱30秒",
+            "深蹲50次",
+            "跳绳100次",
+            "保持尿意15分钟",
+            "揉小腹2分钟",
+            "站立不动10分钟",
+            "连续写小说500字",
+            "手撑膀胱不动1分钟",
+            "喝300ml水",
+            "闭眼冥想5分钟"
+        ];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("points-value").innerText = points;
+            document.getElementById("toiletCount").innerText = toiletCount;
+            document.getElementById("stickyNoteDisplay").innerText = stickyNote ? "便签内容: " + stickyNote : "";
+            document.getElementById("petToiletStatus").innerText = petToiletStatus ? "完成" : "未完成";
+            document.getElementById("petSleepStatus").innerText = petSleepStatus ? "完成" : "未完成";
+        });
+
+        // 页面切换
+        function showPage(pageId) {
+            document.querySelectorAll('.container > div').forEach(div => {
+                if (div.id) {
+                    div.style.display = (div.id === pageId) ? "block" : "none";
+                }
+            });
+        }
+
+        // 完成任务并增加积分
+        function completeTask(amount) {
+            points += amount;
+            localStorage.setItem('points', points);
+            document.getElementById("points-value").innerText = points;
+            alert("任务完成，积分变化: " + amount);
+        }
+
+        // 如厕申请——必须满足所有条件才能申请
+        function applyToilet() {
+            if (points < 50) {
+                document.getElementById("toiletStatus").innerText = "积分不足50，无法申请！";
+                return;
+            }
+            if (!stickyNote) {
+                document.getElementById("toiletStatus").innerText = "便签未记录，无法如厕！";
+                return;
+            }
+            if (!dailyPlanCompleted) {
+                document.getElementById("toiletStatus").innerText = "每日计划未完成，无法如厕！";
+                return;
+            }
+            if (!localStorage.getItem('petToiletStatus') || localStorage.getItem('petToiletStatus') !== "true") {
+                document.getElementById("toiletStatus").innerText = "宠物未如厕，无法如厕！";
+                return;
+            }
+            if (!localStorage.getItem('petSleepStatus') || localStorage.getItem('petSleepStatus') !== "true") {
+                document.getElementById("toiletStatus").innerText = "宠物未睡觉，无法如厕！";
+                return;
+            }
+            points -= 50;
+            localStorage.setItem('points', points);
+            document.getElementById("points-value").innerText = points;
+
+            if (toiletCount > 0) {
+                toiletCount--;
+                localStorage.setItem('toiletCount', toiletCount);
+                document.getElementById("toiletCount").innerText = toiletCount;
+                document.getElementById("toiletStatus").innerText = "如厕申请通过！";
+            } else {
+                document.getElementById("toiletStatus").innerText = "今日如厕次数已达上限！";
+            }
+        }
+
+        // 随机惩罚或奖励任务
+        function randomPunishment() {
+            const punishment = punishments[Math.floor(Math.random() * punishments.length)];
+            document.getElementById("punishmentResult").innerText = "随机任务: " + punishment;
+        }
+
+        // 便签功能
+        function saveStickyNote() {
+            const text = document.getElementById('stickyNoteText').value.trim();
+            if (text === "") {
+                alert("请先输入便签内容！");
+                return;
+            }
+            localStorage.setItem('stickyNote', text);
+            document.getElementById('stickyNoteDisplay').innerText = "便签内容: " + text;
+            alert("便签已保存！");
+        }
+
+        // 每日计划功能
+        function updateDailyPlan() {
+            const checkboxes = document.querySelectorAll('#dailyPlanList input[type="checkbox"]');
+            let allChecked = true;
+            checkboxes.forEach(box => {
+                if (!box.checked) {
+                    allChecked = false;
+                }
+            });
+            dailyPlanCompleted = allChecked;
+            localStorage.setItem('dailyPlanCompleted', dailyPlanCompleted);
+            if (dailyPlanCompleted) {
+                alert("每日计划已完成！");
+            }
+        }
+
+        // 养宠功能
+        function petGoToToilet() {
+            petToiletStatus = true;
+            localStorage.setItem('petToiletStatus', "true");
+            document.getElementById("petToiletStatus").innerText = "完成";
+            alert("宠物已如厕！");
+        }
+
+        function petSleep() {
+            petSleepStatus = true;
+            localStorage.setItem('petSleepStatus', "true");
+            document.getElementById("petSleepStatus").innerText = "完成";
+            alert("宠物已睡觉！");
+        }
+
+        function resetPetStatus() {
+            petToiletStatus = false;
+            petSleepStatus = false;
+            localStorage.setItem('petToiletStatus', "false");
+            localStorage.setItem('petSleepStatus', "false");
+            document.getElementById("petToiletStatus").innerText = "未完成";
+            document.getElementById("petSleepStatus").innerText = "未完成";
+            alert("宠物状态已重置！");
+        }
+
+        // 计算机功能
+        function appendCalc(value) {
+            document.getElementById("calcDisplay").value += value;
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(document.getElementById("calcDisplay").value);
+                document.getElementById("calcDisplay").value = result;
+            } catch (e) {
+                alert("计算错误！");
+            }
+        }
+
+        function clearCalc() {
+            document.getElementById("calcDisplay").value = "";
+        }
+
+        // 每日任务中周期性新增任务
+        function addPeriodicTask() {
+            const periodicTasks = document.getElementById("periodic-tasks");
+            const newTask = document.createElement("li");
+            const tasksArray = [
+                {desc: "深呼吸5次", points: 5},
+                {desc: "伸展身体", points: 8},
+                {desc: "整理桌面", points: 10},
+                {desc: "喝一杯水", points: 7}
+            ];
+            const randomTask = tasksArray[Math.floor(Math.random() * tasksArray.length)];
+            newTask.innerHTML = `<button onclick="completeTask(${randomTask.points})">${randomTask.desc} (+${randomTask.points}分)</button>`;
+            periodicTasks.appendChild(newTask);
+        }
+
+        // 每30秒自动添加一个新任务
+        setInterval(addPeriodicTask, 30000);
+    </script>
+</body>
+</html>
